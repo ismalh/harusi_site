@@ -3,444 +3,534 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harusi – La rencontre halal, à la comorienne</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Harusi — La rencontre halal, à la comorienne</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --green: #327136;
-    --green-light: #2E7D32;
-    --green-pale: #E8F5E9;
-    --gold: #FFD700;
-    --gold-dark: #F9A825;
-    --white: #FFFFFF;
-    --text: #1a1a1a;
-    --text-muted: #555;
-    --radius: 14px;
-  }
+:root {
+  --ivory: #F7F4EE;
+  --sand: #EDE8DF;
+  --green: #1F4D2B;
+  --green-mid: #2E6B3E;
+  --green-pale: #EAF0EB;
+  --gold: #C8A96E;
+  --gold-light: #E8D5A8;
+  --text: #1a1a18;
+  --text-muted: #6b6b60;
+  --white: #FFFFFF;
+}
 
-  body {
-    font-family: 'Inter', sans-serif;
-    color: var(--text);
-    background: var(--white);
-    line-height: 1.65;
-  }
+html { scroll-behavior: smooth; }
 
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: rgba(66, 127, 70, 0.97);
-    backdrop-filter: blur(8px);
-    z-index: 100;
-    padding: 0 5%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
-  }
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: var(--gold);
-    letter-spacing: 1px;
-  }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    color: rgba(255,255,255,0.85);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-cta {
-    background: var(--gold);
-    color: var(--green);
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.85rem;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-  .nav-cta:hover { opacity: 0.88; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--ivory);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
 
-  /* HERO — vert allégé */
-  #hero {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #4CAF50 0%, #43A047 50%, #2e7d45 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 100px 5% 60px;
-    position: relative;
-    overflow: hidden;
-  }
-  #hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle at 20% 80%, rgba(255,215,0,0.08) 0%, transparent 50%),
-                      radial-gradient(circle at 80% 20%, rgba(255,215,0,0.06) 0%, transparent 50%);
-  }
-  .hero-content { position: relative; max-width: 720px; }
-  .hero-badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,215,0,0.4);
-    color: var(--gold);
-    padding: 6px 18px;
-    border-radius: 50px;
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    margin-bottom: 1.5rem;
-  }
-  .hero-logo-circle {
-    width: 90px;
-    height: 90px;
-    background: var(--gold);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem;
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    color: var(--green);
-    font-weight: 700;
-    box-shadow: 0 0 40px rgba(255,215,0,0.3);
-  }
-  #hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
-    color: var(--white);
-    line-height: 1.2;
-    margin-bottom: 1rem;
-  }
-  #hero h1 span { color: var(--gold); }
-  #hero p {
-    font-size: 1.15rem;
-    color: rgba(255,255,255,0.85);
-    margin-bottom: 2.5rem;
-    max-width: 520px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--gold);
-    color: var(--green);
-    padding: 14px 32px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 20px rgba(255,215,0,0.35);
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,215,0,0.45); }
-  .btn-outline {
-    background: transparent;
-    color: var(--white);
-    padding: 14px 32px;
-    border-radius: 50px;
-    border: 1.5px solid rgba(255,255,255,0.4);
-    font-weight: 500;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .btn-outline:hover { border-color: var(--gold); background: rgba(255,215,0,0.07); }
-  .hero-stats {
-    display: flex;
-    gap: 2.5rem;
-    justify-content: center;
-    margin-top: 3rem;
-    flex-wrap: wrap;
-  }
-  .stat { text-align: center; }
-  .stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); font-weight: 700; }
-  .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.7); margin-top: 2px; }
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6%;
+  height: 68px;
+  background: rgba(247, 244, 238, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200, 169, 110, 0.2);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--green);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--green); }
+.nav-cta {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--green);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-cta:hover { color: var(--gold); }
 
-  /* SECTIONS */
-  section { padding: 90px 5%; }
-  .section-label {
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--green);
-    margin-bottom: 0.75rem;
-  }
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-    color: var(--text);
-    line-height: 1.25;
-    margin-bottom: 1rem;
-  }
-  .section-title span { color: var(--green); }
-  .section-subtitle {
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    max-width: 560px;
-  }
-  .centered { text-align: center; }
-  .centered .section-subtitle { margin: 0 auto; }
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  background: var(--green);
+  display: flex;
+  align-items: flex-end;
+  padding: 0 6% 9vh;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(200,169,110,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(200,169,110,0.05) 0%, transparent 60%);
+}
+.hero-ornament {
+  position: absolute;
+  top: 50%;
+  right: 6%;
+  transform: translateY(-50%);
+  width: 380px;
+  height: 380px;
+  border: 1px solid rgba(200,169,110,0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-ornament::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border: 1px solid rgba(200,169,110,0.1);
+  border-radius: 50%;
+}
+.hero-ornament-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 9rem;
+  font-weight: 600;
+  color: rgba(200,169,110,0.12);
+  line-height: 1;
+  user-select: none;
+}
+.hero-content { position: relative; max-width: 640px; }
+.hero-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+#hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 400;
+  color: var(--ivory);
+  line-height: 1.05;
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.5px;
+}
+#hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+#hero p {
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(247,244,238,0.65);
+  max-width: 440px;
+  margin-bottom: 3rem;
+  line-height: 1.8;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+.btn-gold {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--green);
+  padding: 14px 36px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+.hero-scroll {
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(247,244,238,0.35);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.2s;
+}
+.hero-scroll:hover { color: rgba(247,244,238,0.6); }
+.hero-scroll::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: rgba(247,244,238,0.2);
+}
 
-  /* CONCEPT */
-  #concept { background: var(--green-pale); }
-  .concept-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-  .concept-card {
-    background: var(--white);
-    border-radius: var(--radius);
-    padding: 2rem 1.75rem;
-    border: 1px solid rgba(27,94,32,0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .concept-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(27,94,32,0.12); }
-  .concept-icon {
-    width: 52px;
-    height: 52px;
-    background: var(--green-pale);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.25rem;
-    font-size: 1.5rem;
-  }
-  .concept-card h3 { font-size: 1.1rem; font-weight: 600; color: var(--green); margin-bottom: 0.5rem; }
-  .concept-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+/* ── SECTIONS COMMUNES ── */
+section { padding: 100px 6%; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
 
-  /* FEATURES */
-  #features { background: var(--white); }
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-  .feature-card {
-    border-radius: var(--radius);
-    padding: 2.25rem 2rem;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(27,94,32,0.12);
-  }
-  .feature-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--green), var(--gold));
-  }
-  .feature-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    color: var(--green-pale);
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: 1rem;
-  }
-  .feature-card h3 { font-size: 1.15rem; font-weight: 600; color: var(--green); margin-bottom: 0.75rem; }
-  .feature-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
-  .feature-tag {
-    display: inline-block;
-    margin-top: 1rem;
-    background: var(--green-pale);
-    color: var(--green);
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 4px 12px;
-    border-radius: 50px;
-  }
+.eyebrow {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.7;
+}
+h2.display {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  color: var(--green);
+  line-height: 1.1;
+  letter-spacing: -0.3px;
+}
+h2.display em { font-style: italic; }
 
-  /* PRICING */
-  #pricing { background: var(--green-pale); }
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-    align-items: start;
-  }
-  .pricing-card {
-    background: var(--white);
-    border-radius: var(--radius);
-    padding: 2rem 1.75rem;
-    border: 1.5px solid rgba(27,94,32,0.12);
-    transition: transform 0.2s, box-shadow 0.2s;
-    position: relative;
-  }
-  .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(27,94,32,0.12); }
-  .pricing-card.featured {
-    border-color: var(--gold);
-    box-shadow: 0 8px 40px rgba(255,215,0,0.2);
-  }
-  .pricing-badge {
-    position: absolute;
-    top: -13px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(90deg, var(--green), var(--green-light));
-    color: var(--white);
-    font-size: 0.72rem;
-    font-weight: 600;
-    padding: 4px 16px;
-    border-radius: 50px;
-    white-space: nowrap;
-    letter-spacing: 0.5px;
-  }
-  .pricing-name { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.75rem; }
-  .pricing-price { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--green); line-height: 1; }
-  .pricing-price sup { font-size: 1.2rem; vertical-align: super; }
-  .pricing-price span { font-size: 0.9rem; color: var(--text-muted); font-family: 'Inter', sans-serif; font-weight: 400; }
-  .pricing-divider { height: 1px; background: var(--green-pale); margin: 1.5rem 0; }
-  .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-  .pricing-features li { font-size: 0.88rem; color: var(--text-muted); display: flex; align-items: flex-start; gap: 10px; }
-  .pricing-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-  .pricing-features li.disabled { opacity: 0.4; }
-  .pricing-features li.disabled::before { content: '✗'; color: #ccc; }
-  .pricing-btn {
-    display: block;
-    text-align: center;
-    margin-top: 1.75rem;
-    padding: 12px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .pricing-btn-outline { border: 1.5px solid var(--green); color: var(--green); }
-  .pricing-btn-outline:hover { background: var(--green); color: var(--white); }
-  .pricing-btn-filled { background: var(--green); color: var(--white); }
-  .pricing-btn-filled:hover { background: var(--green-light); }
-  .pricing-btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--green); }
-  .pricing-btn-gold:hover { opacity: 0.9; }
+/* ── CONCEPT ── */
+#concept { background: var(--ivory); }
+.concept-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: end;
+  margin-bottom: 5rem;
+}
+.concept-header p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.9;
+  font-weight: 300;
+}
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid rgba(31,77,43,0.12);
+}
+.concept-item {
+  padding: 2.5rem 2rem 2.5rem 0;
+  border-right: 1px solid rgba(31,77,43,0.08);
+}
+.concept-item:last-child { border-right: none; padding-right: 0; }
+.concept-item:first-child { padding-left: 0; }
+.concept-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+.concept-item h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--green);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+.concept-item p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-weight: 300;
+}
 
-  /* TESTIMONIALS */
-  #testimonials { background: var(--white); }
-  .testimonials-placeholder {
-    margin-top: 3rem;
-    background: var(--green-pale);
-    border: 2px dashed rgba(27,94,32,0.2);
-    border-radius: var(--radius);
-    padding: 4rem 2rem;
-    text-align: center;
-  }
-  .testimonials-placeholder p { color: var(--text-muted); font-style: italic; font-size: 0.95rem; }
-  .testimonials-placeholder strong { display: block; color: var(--green); font-size: 1.05rem; margin-bottom: 0.5rem; font-style: normal; }
+/* ── FEATURES ── */
+#features { background: var(--green); padding: 100px 6%; }
+#features .eyebrow { color: var(--gold); }
+#features .eyebrow::before { background: var(--gold); }
+#features h2.display { color: var(--ivory); }
+.features-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 5rem;
+  gap: 3rem;
+}
+.features-sub {
+  font-size: 0.9rem;
+  color: rgba(247,244,238,0.5);
+  max-width: 320px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+.features-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(200,169,110,0.15);
+}
+.feature-item {
+  background: var(--green);
+  padding: 3rem 2.5rem;
+  transition: background 0.3s;
+}
+.feature-item:hover { background: rgba(46,107,62,0.4); }
+.feature-index {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem;
+  font-weight: 400;
+  color: rgba(200,169,110,0.15);
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+.feature-item h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--ivory);
+  margin-bottom: 0.75rem;
+}
+.feature-item p {
+  font-size: 0.85rem;
+  color: rgba(247,244,238,0.5);
+  line-height: 1.8;
+  font-weight: 300;
+}
 
-  /* CTA */
-  #cta {
-    background: linear-gradient(135deg, #3d8b41 0%, #4CAF50 60%, #2e7d45 100%);
-    text-align: center;
-    padding: 100px 5%;
-    position: relative;
-    overflow: hidden;
-  }
-  #cta::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at center, rgba(255,215,0,0.07) 0%, transparent 70%);
-  }
+/* ── VALEURS ── */
+#valeurs { background: var(--sand); }
+.valeurs-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 6rem;
+  align-items: center;
+}
+.valeurs-text h2.display { margin-bottom: 1.5rem; }
+.valeurs-text p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.9;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+.valeurs-list { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
+.valeurs-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.7;
+}
+.valeurs-list li::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+  margin-top: 0.65rem;
+}
+.valeurs-visual {
+  aspect-ratio: 3/4;
+  background: var(--green);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.valeurs-visual-inner {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 7rem;
+  font-style: italic;
+  color: rgba(200,169,110,0.15);
+  user-select: none;
+  line-height: 1;
+}
+.valeurs-visual-tag {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
+  border-top: 1px solid rgba(200,169,110,0.2);
+  padding-top: 1rem;
+}
+.valeurs-visual-tag span {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(200,169,110,0.5);
+}
 
-  .signup-box {
-    position: relative;
-    margin: 0 auto;
-    padding: 40px 36px;
-    max-width: 440px;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-  }
-  .signup-box h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    color: var(--green);
-    margin-bottom: 8px;
-  }
-  .signup-box p {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-  }
-  .signup-box input {
-    width: 100%;
-    padding: 13px 16px;
-    margin-bottom: 12px;
-    border: 1.5px solid #ddd;
-    border-radius: 10px;
-    outline: none;
-    font-size: 0.95rem;
-    font-family: 'Inter', sans-serif;
-    transition: border-color 0.2s;
-  }
-  .signup-box input:focus { border-color: var(--green); }
-  .signup-box button {
-    width: 100%;
-    padding: 13px;
-    border: none;
-    border-radius: 10px;
-    background: var(--green);
-    color: white;
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    transition: background 0.2s;
-  }
-  .signup-box button:hover { background: var(--green-light); }
-  .signup-box button:disabled { opacity: 0.6; cursor: not-allowed; }
-  #message {
-    margin-top: 12px;
-    font-size: 0.88rem;
-    font-weight: 500;
-    min-height: 20px;
-  }
-  .cta-note {
-    font-size: 0.78rem;
-    color: rgba(255,255,255,0.55);
-    margin-top: 1.25rem;
-    position: relative;
-  }
+/* ── CTA ── */
+#cta {
+  background: var(--ivory);
+  text-align: center;
+  padding: 120px 6%;
+}
+#cta h2.display { margin-bottom: 1rem; }
+#cta p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+  font-weight: 300;
+  line-height: 1.8;
+}
+.signup-wrap {
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--white);
+  border: 1px solid rgba(31,77,43,0.1);
+  padding: 2.5rem;
+}
+.signup-wrap h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  color: var(--green);
+  margin-bottom: 0.5rem;
+}
+.signup-wrap p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+.signup-wrap input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid rgba(31,77,43,0.15);
+  background: var(--ivory);
+  font-size: 0.88rem;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+  margin-bottom: 10px;
+}
+.signup-wrap input:focus { border-color: var(--green); }
+.signup-wrap button {
+  width: 100%;
+  padding: 13px;
+  background: var(--green);
+  color: var(--ivory);
+  border: none;
+  font-size: 0.8rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.signup-wrap button:hover { background: var(--green-mid); }
+.signup-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 1rem;
+  opacity: 0.6;
+  font-weight: 300;
+}
 
-  /* FOOTER — vert allégé */
-  footer {
-    background: #4a9e4f;
-    color: rgba(255,255,255,0.65);
-    text-align: center;
-    padding: 2.5rem 5%;
-    font-size: 0.82rem;
-  }
-  footer .footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    color: var(--gold);
-    margin-bottom: 0.75rem;
-    display: block;
-  }
-  footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
-  footer a:hover { color: var(--gold); }
+/* ── FOOTER ── */
+footer {
+  background: var(--green);
+  padding: 4rem 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(200,169,110,0.1);
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.footer-links a {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(247,244,238,0.35);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-copy {
+  font-size: 0.75rem;
+  color: rgba(247,244,238,0.25);
+  font-weight: 300;
+}
 
-  @media (max-width: 640px) {
-    nav { padding: 0 4%; }
-    .nav-links { display: none; }
-    .hero-stats { gap: 1.5rem; }
-    .signup-box { padding: 28px 20px; }
-  }
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .concept-grid { grid-template-columns: 1fr 1fr; }
+  .concept-item { border-right: none; border-bottom: 1px solid rgba(31,77,43,0.08); padding: 2rem 0; }
+  .concept-header { grid-template-columns: 1fr; gap: 2rem; }
+  .features-list { grid-template-columns: 1fr; }
+  .valeurs-grid { grid-template-columns: 1fr; }
+  .valeurs-visual { display: none; }
+  .hero-ornament { display: none; }
+  footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+}
+@media (max-width: 640px) {
+  nav { padding: 0 5%; }
+  .nav-links { display: none; }
+  section { padding: 70px 5%; }
+  #hero { padding: 0 5% 8vh; }
+}
 </style>
 </head>
 <body>
@@ -451,66 +541,59 @@
   <ul class="nav-links">
     <li><a href="#concept">Concept</a></li>
     <li><a href="#features">Fonctionnalités</a></li>
-    <li><a href="#pricing">Abonnements</a></li>
-    <li><a href="#cta">Nous rejoindre</a></li>
+    <li><a href="#valeurs">Nos valeurs</a></li>
+    <li><a href="#cta">Rejoindre</a></li>
   </ul>
   <a href="#cta" class="nav-cta">Être notifié</a>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-ornament">
+    <span class="hero-ornament-letter">H</span>
+  </div>
   <div class="hero-content">
-    <div class="hero-badge">🌙 Bientôt disponible — Rejoignez la communauté</div>
-    <div class="hero-logo-circle">H</div>
-    <h1>La rencontre <span>halal</span>,<br>à la comorienne</h1>
-    <p>Harusi réunit les comoriens du monde entier pour des rencontres sérieuses, bienveillantes et dans le respect des valeurs islamiques.</p>
-    <div class="hero-btns">
-      <a href="#cta" class="btn-primary">📲 Être notifié du lancement</a>
-      <a href="#concept" class="btn-outline">Découvrir le concept</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Profils vérifiés</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">Halal</div>
-        <div class="stat-label">Par conception</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">🇰🇲</div>
-        <div class="stat-label">Communauté</div>
-      </div>
+    <div class="hero-eyebrow">Bientôt disponible</div>
+    <h1>La rencontre <em>halal</em>,<br>à la comorienne</h1>
+    <p>Harusi réunit les comoriens du monde entier pour des rencontres sérieuses, dans le respect des valeurs islamiques et de la tradition.</p>
+    <div class="hero-actions">
+      <a href="#cta" class="btn-gold">Être notifié du lancement</a>
+      <a href="#concept" class="hero-scroll">Découvrir</a>
     </div>
   </div>
 </section>
 
 <!-- CONCEPT -->
 <section id="concept">
-  <div style="max-width: 1100px; margin: 0 auto;">
-    <div class="section-label">Notre concept</div>
-    <h2 class="section-title">Des rencontres qui respectent<br><span>vos valeurs</span></h2>
-    <p class="section-subtitle">Harusi n'est pas une simple appli de rencontres. C'est une plateforme pensée pour la communauté comorienne, enracinée dans la foi et la tradition.</p>
+  <div class="section-inner">
+    <div class="concept-header">
+      <div>
+        <div class="eyebrow">Notre concept</div>
+        <h2 class="display">Conçu pour<br>votre communauté</h2>
+      </div>
+      <p>Harusi n'est pas une application de rencontres ordinaire. C'est une plateforme pensée pour la communauté comorienne, enracinée dans la foi et la tradition — pour ceux qui cherchent un engagement sincère.</p>
+    </div>
     <div class="concept-grid">
-      <div class="concept-card">
-        <div class="concept-icon">🕌</div>
+      <div class="concept-item">
+        <div class="concept-num">01</div>
         <h3>Fondation islamique</h3>
-        <p>Chaque fonctionnalité de Harusi est conçue dans le respect des principes de l'Islam. Pas de contenu inapproprié, pas de tchat libre non supervisé.</p>
+        <p>Chaque fonctionnalité est conçue dans le respect des principes de l'Islam. Pas de contenu inapproprié, pas de tchat non supervisé.</p>
       </div>
-      <div class="concept-card">
-        <div class="concept-icon">👨‍👩‍👧</div>
-        <h3>Système tuteur intégré</h3>
-        <p>Un wali ou tuteur familial peut être ajouté au processus, conformément à la tradition islamique comorienne. Les familles sont impliquées dès le départ.</p>
+      <div class="concept-item">
+        <div class="concept-num">02</div>
+        <h3>Système wali intégré</h3>
+        <p>Un tuteur familial peut suivre les échanges, conformément à la tradition comorienne. Les familles sont impliquées dès le départ.</p>
       </div>
-      <div class="concept-card">
-        <div class="concept-icon">🌍</div>
+      <div class="concept-item">
+        <div class="concept-num">03</div>
         <h3>Communauté mondiale</h3>
-        <p>Que vous soyez à Moroni, Paris, Marseille ou Mayotte — Harusi connecte les comoriens de la diaspora et de l'archipel en un seul endroit.</p>
+        <p>Moroni, Paris, Marseille, Mayotte — Harusi connecte les comoriens de la diaspora et de l'archipel en un seul espace.</p>
       </div>
-      <div class="concept-card">
-        <div class="concept-icon">💍</div>
-        <h3>Mariage, pas juste une rencontre</h3>
-        <p>Notre objectif est clair : aider les jeunes comoriens à trouver un(e) époux(se) sérieux(se). Chaque profil, chaque interaction est orienté vers cela.</p>
+      <div class="concept-item">
+        <div class="concept-num">04</div>
+        <h3>Vers le mariage</h3>
+        <p>Notre objectif est clair : accompagner vers un mariage sérieux. Chaque profil, chaque échange est orienté vers cela.</p>
       </div>
     </div>
   </div>
@@ -518,98 +601,71 @@
 
 <!-- FEATURES -->
 <section id="features">
-  <div style="max-width: 1100px; margin: 0 auto;">
-    <div class="section-label centered">Fonctionnalités</div>
-    <h2 class="section-title centered">3 piliers qui font<br><span>la différence</span></h2>
-    <p class="section-subtitle centered" style="margin: 0 auto 0;">Ce qui distingue Harusi de toutes les autres plateformes.</p>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-num">01</div>
-        <h3>Profils 100% vérifiés</h3>
-        <p>Chaque inscription est vérifiée manuellement. Photo d'identité, numéro de téléphone, et validation communautaire optionnelle. Zéro faux profil toléré.</p>
-        <span class="feature-tag">Confiance garantie</span>
+  <div class="section-inner">
+    <div class="features-header">
+      <div>
+        <div class="eyebrow">Fonctionnalités</div>
+        <h2 class="display">Ce qui nous<br>distingue</h2>
       </div>
-      <div class="feature-card">
-        <div class="feature-num">02</div>
-        <h3>Messagerie supervisée</h3>
-        <p>Les échanges sont encadrés et limités en phase initiale. Pas de photos privées, pas de contenu inapproprié. Une messagerie pure, dans le respect mutuel.</p>
-        <span class="feature-tag">Halal by design</span>
+      <p class="features-sub">Trois piliers conçus pour des rencontres dignes, encadrées et authentiques.</p>
+    </div>
+    <div class="features-list">
+      <div class="feature-item">
+        <div class="feature-index">01</div>
+        <h3>Profils vérifiés</h3>
+        <p>Chaque inscription est vérifiée manuellement. Photo, téléphone, validation. Zéro faux profil toléré.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-num">03</div>
+      <div class="feature-item">
+        <div class="feature-index">02</div>
+        <h3>Messagerie encadrée</h3>
+        <p>Les échanges sont limités en phase initiale. Une messagerie respectueuse, sans contenu inapproprié.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-index">03</div>
         <h3>Tuteur intégré</h3>
-        <p>Invitez un membre de votre famille à suivre vos échanges. Le wali peut lire les conversations et donner son accord avant tout passage à l'étape suivante.</p>
-        <span class="feature-tag">Tradition respectée</span>
+        <p>Invitez un membre de votre famille à suivre vos échanges via un lien sécurisé dédié.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
-<section id="pricing">
-  <div style="max-width: 1000px; margin: 0 auto;">
-    <div class="section-label centered">Abonnements</div>
-    <h2 class="section-title centered">Une formule pour<br><span>chaque parcours</span></h2>
-    <p class="section-subtitle centered" style="margin: 0 auto 0;">Commencez gratuitement. Passez au niveau supérieur quand vous êtes prêt(e).</p>
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="pricing-name">Gratuit</div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li>Créer un profil complet</li>
-          <li>Consulter les profils</li>
-          <li class="disabled">Tuteur intégré</li>
-          <li class="disabled">Profil mis en avant</li>
-          <li class="disabled">Support prioritaire</li>
+<!-- VALEURS -->
+<section id="valeurs">
+  <div class="section-inner">
+    <div class="valeurs-grid">
+      <div class="valeurs-text">
+        <div class="eyebrow">Nos valeurs</div>
+        <h2 class="display">Sérieux.<br><em>Respectueux.</em><br>Ancré.</h2>
+        <p>Harusi est née d'un constat simple : la communauté comorienne mérite une plateforme qui lui ressemble. Une plateforme qui comprend ses valeurs, sa culture, et son rapport au mariage.</p>
+        <ul class="valeurs-list">
+          <li>Profils vérifiés, pas d'anonymat</li>
+          <li>Aucune photo inappropriée autorisée</li>
+          <li>Supervision familiale possible à tout moment</li>
+          <li>Données personnelles protégées et non revendues</li>
+          <li>Modération humaine, pas uniquement algorithmique</li>
         </ul>
-        <a href="#cta" class="pricing-btn pricing-btn-outline">Commencer gratuitement</a>
       </div>
-      <div class="pricing-card featured">
-        <div class="pricing-badge">⭐ Le plus populaire</div>
-        <div class="pricing-name">Premium</div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li>Profil complet + photos illimitées</li>
-          <li>Tuteur intégré (1 wali)</li>
-          <li>Filtres de recherche avancés</li>
-          <li class="disabled">Profil mis en avant</li>
-        </ul>
-        <a href="#cta" class="pricing-btn pricing-btn-filled">Choisir Premium</a>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-name">VIP</div>
-        <div class="pricing-divider"></div>
-        <ul class="pricing-features">
-          <li>Tout le plan Premium</li>
-          <li>Profil mis en avant </li>
-          <li>Badge "Profil vérifié VIP"</li>
-          <li>Support prioritaire 24h</li>
-        </ul>
-        <a href="#cta" class="pricing-btn pricing-btn-gold">Choisir VIP</a>
+      <div class="valeurs-visual">
+        <div class="valeurs-visual-inner">Harusi</div>
+        <div class="valeurs-visual-tag">
+          <span>La rencontre halal · À la comorienne</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div style="max-width: 1000px; margin: 0 auto;">
-    <div class="section-label centered">Témoignages</div>
-    <h2 class="section-title centered">Ils ont trouvé leur<br><span>moitié avec Harusi</span></h2>
-    <div class="testimonials-placeholder">
-      <strong>✨ Les premiers témoignages arrivent bientôt</strong>
-      <p>Rejoignez notre communauté de lancement et soyez parmi les premiers à partager votre histoire.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CTA FINAL -->
+<!-- CTA -->
 <section id="cta">
-  <div style="max-width: 680px; margin: 0 auto; position: relative;">
-    <div class="signup-box">
-      <h2>Rejoins-nous 🌙</h2>
-      <p>Entre ton email pour être parmi les premiers avertis du lancement</p>
-      <iframe data-tally-src="https://tally.so/embed/jazOjx?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+  <div class="section-inner">
+    <div class="eyebrow" style="justify-content:center;">Lancement imminent</div>
+    <h2 class="display" style="margin-bottom:1rem;">Rejoins<br>la communauté</h2>
+    <p>Sois parmi les premiers à accéder à Harusi lors du lancement.<br>Aucun spam — juste la date et une surprise pour les premiers inscrits.</p>
+    <div class="signup-wrap">
+      <h3>Être notifié</h3>
+      <p>Entre ton email pour rejoindre la liste d'attente</p>
+      <iframe
+        data-tally-src="https://tally.so/embed/jazOjx?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
         loading="lazy"
         width="100%"
         height="120"
@@ -617,36 +673,32 @@
         marginheight="0"
         marginwidth="0"
         title="Harusi liste d'attente"
-        style="border: none; margin-top: 8px;">
+        style="border: none; margin-top: 4px; background: transparent;">
       </iframe>
+      <p class="signup-note">Aucun spam. Désinscription possible à tout moment.</p>
     </div>
-    <p class="cta-note">Aucun spam. Juste la date de lancement + une surprise pour les premiers inscrits.</p>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <span class="footer-logo">Harusi</span>
-  <p style="margin-bottom: 0.75rem;">La rencontre halal, à la comorienne</p>
-  <p>
-    <a href="#">Mentions légales</a> &nbsp;·&nbsp;
-    <a href="#">Politique de confidentialité</a> &nbsp;·&nbsp;
-    <a href="#">Contact</a>
-  </p>
+  <ul class="footer-links">
+    <li><a href="#">Mentions légales</a></li>
+    <li><a href="#">Confidentialité</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2025 Harusi</span>
 </footer>
 
 <script>
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });
 });
 </script>
 <script async src="https://tally.so/widgets/embed.js"></script>
-
 </body>
 </html>
