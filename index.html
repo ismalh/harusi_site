@@ -4,27 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Harusi — La rencontre halal, à la comorienne</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
   --ivory: #F7F4EE;
   --sand: #EDE8DF;
-  --green: #1F4D2B;
-  --green-mid: #2E6B3E;
-  --green-pale: #EAF0EB;
-  --gold: #C8A96E;
-  --gold-light: #E8D5A8;
-  --text: #1a1a18;
-  --text-muted: #6b6b60;
+  --green: #1A3D24;
+  --green-mid: #2A5438;
+  --green-light: #3A6B49;
+  --gold: #B8923A;
+  --gold-light: #D4AC5C;
+  --gold-pale: #F0E4C4;
+  --text: #181814;
+  --text-muted: #6B6B5E;
   --white: #FFFFFF;
+  --border: rgba(26,61,36,0.1);
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   color: var(--text);
   background: var(--ivory);
   line-height: 1.6;
@@ -39,18 +41,18 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 6%;
-  height: 68px;
-  background: rgba(247, 244, 238, 0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(200, 169, 110, 0.2);
+  padding: 0 5%;
+  height: 64px;
+  background: rgba(247,244,238,0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
 }
 .nav-logo {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--green);
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 .nav-links {
@@ -59,9 +61,9 @@ nav {
   list-style: none;
 }
 .nav-links a {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 400;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--text-muted);
   text-decoration: none;
@@ -69,217 +71,275 @@ nav {
 }
 .nav-links a:hover { color: var(--green); }
 .nav-cta {
-  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
   font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--green);
+  letter-spacing: 0.5px;
+  color: var(--white);
+  background: var(--green);
   text-decoration: none;
-  border-bottom: 1px solid var(--gold);
-  padding-bottom: 2px;
-  transition: color 0.2s, border-color 0.2s;
+  padding: 9px 22px;
+  transition: background 0.2s;
 }
-.nav-cta:hover { color: var(--gold); }
+.nav-cta:hover { background: var(--green-mid); }
 
 /* ── HERO ── */
 #hero {
   min-height: 100vh;
   background: var(--green);
-  display: flex;
-  align-items: flex-end;
-  padding: 0 6% 9vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  padding-top: 64px;
   position: relative;
   overflow: hidden;
 }
-.hero-bg-pattern {
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(200,169,110,0.07) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(200,169,110,0.05) 0%, transparent 60%);
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8vh 6% 8vh 5%;
+  position: relative;
+  z-index: 2;
 }
-.hero-ornament {
-  position: absolute;
-  top: 50%;
-  right: 6%;
-  transform: translateY(-50%);
-  width: 380px;
-  height: 380px;
-  border: 1px solid rgba(200,169,110,0.15);
-  border-radius: 50%;
+.hero-right {
+  position: relative;
+  background: var(--green-mid);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
-.hero-ornament::before {
-  content: '';
+.hero-right-pattern {
   position: absolute;
-  width: 300px;
-  height: 300px;
-  border: 1px solid rgba(200,169,110,0.1);
-  border-radius: 50%;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(184,146,58,0.04) 40px,
+      rgba(184,146,58,0.04) 41px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(184,146,58,0.04) 40px,
+      rgba(184,146,58,0.04) 41px
+    );
 }
-.hero-ornament-letter {
+.hero-right-content {
+  position: relative;
+  text-align: center;
+  padding: 3rem;
+}
+.hero-arabic {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 9rem;
-  font-weight: 600;
-  color: rgba(200,169,110,0.12);
+  font-size: clamp(4rem, 8vw, 8rem);
+  font-style: italic;
+  color: rgba(184,146,58,0.15);
   line-height: 1;
   user-select: none;
-}
-.hero-content { position: relative; max-width: 640px; }
-.hero-eyebrow {
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold);
+  display: block;
   margin-bottom: 2rem;
+}
+.hero-card {
+  background: rgba(247,244,238,0.04);
+  border: 1px solid rgba(184,146,58,0.2);
+  padding: 2rem 2.5rem;
+  text-align: left;
+}
+.hero-card-label {
+  font-size: 0.68rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 0.75rem;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+}
+.hero-card-label::before {
+  content: '';
+  display: block;
+  width: 16px;
+  height: 1px;
+  background: var(--gold);
+}
+.hero-card p {
+  font-size: 0.9rem;
+  color: rgba(247,244,238,0.55);
+  font-weight: 300;
+  line-height: 1.7;
+}
+.hero-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .hero-eyebrow::before {
   content: '';
-  display: block;
-  width: 32px;
+  width: 28px;
   height: 1px;
   background: var(--gold);
-  opacity: 0.6;
+  opacity: 0.7;
+  display: block;
 }
 #hero h1 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  font-weight: 400;
+  font-size: clamp(2.8rem, 4.5vw, 5rem);
+  font-weight: 300;
   color: var(--ivory);
-  line-height: 1.05;
+  line-height: 1.08;
   margin-bottom: 1.75rem;
   letter-spacing: -0.5px;
 }
 #hero h1 em {
   font-style: italic;
-  color: var(--gold);
+  color: var(--gold-light);
+  font-weight: 400;
 }
-#hero p {
-  font-size: 1rem;
+#hero .hero-sub {
+  font-size: 0.92rem;
   font-weight: 300;
-  color: rgba(247,244,238,0.65);
-  max-width: 440px;
+  color: rgba(247,244,238,0.55);
+  max-width: 400px;
   margin-bottom: 3rem;
-  line-height: 1.8;
+  line-height: 1.85;
 }
 .hero-actions {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 .btn-gold {
   display: inline-block;
   background: var(--gold);
   color: var(--green);
-  padding: 14px 36px;
-  font-size: 0.82rem;
+  padding: 14px 32px;
+  font-size: 0.8rem;
   font-weight: 500;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   text-decoration: none;
-  transition: background 0.2s, transform 0.2s;
+  transition: background 0.2s, transform 0.15s;
 }
 .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
-.hero-scroll {
-  font-size: 0.75rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: rgba(247,244,238,0.35);
+.btn-ghost {
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: rgba(247,244,238,0.4);
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  border-bottom: 1px solid rgba(247,244,238,0.15);
+  padding-bottom: 2px;
   transition: color 0.2s;
 }
-.hero-scroll:hover { color: rgba(247,244,238,0.6); }
-.hero-scroll::after {
-  content: '';
-  display: block;
-  width: 1px;
-  height: 40px;
-  background: rgba(247,244,238,0.2);
+.btn-ghost:hover { color: rgba(247,244,238,0.7); }
+.hero-stats {
+  display: flex;
+  gap: 3rem;
+  margin-top: 4rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(247,244,238,0.08);
+}
+.hero-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.hero-stat-label {
+  font-size: 0.72rem;
+  color: rgba(247,244,238,0.35);
+  letter-spacing: 0.5px;
+  font-weight: 300;
 }
 
-/* ── SECTIONS COMMUNES ── */
-section { padding: 100px 6%; }
-.section-inner { max-width: 1100px; margin: 0 auto; }
+/* ── SECTIONS ── */
+section { padding: 96px 5%; }
+.section-inner { max-width: 1140px; margin: 0 auto; }
 
 .eyebrow {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 500;
-  letter-spacing: 3px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 1.25rem;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 .eyebrow::before {
   content: '';
-  display: block;
-  width: 24px;
+  width: 20px;
   height: 1px;
   background: var(--gold);
   opacity: 0.7;
+  display: block;
 }
 h2.display {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 400;
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  font-weight: 300;
   color: var(--green);
-  line-height: 1.1;
+  line-height: 1.12;
   letter-spacing: -0.3px;
 }
-h2.display em { font-style: italic; }
+h2.display em { font-style: italic; font-weight: 400; }
 
 /* ── CONCEPT ── */
 #concept { background: var(--ivory); }
-.concept-header {
+.concept-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: end;
-  margin-bottom: 5rem;
+  grid-template-columns: 5fr 7fr;
+  gap: 6rem;
+  align-items: start;
 }
-.concept-header p {
-  font-size: 0.95rem;
+.concept-left { position: sticky; top: 96px; }
+.concept-left h2.display { margin-bottom: 1.5rem; }
+.concept-left p {
+  font-size: 0.9rem;
   color: var(--text-muted);
   line-height: 1.9;
   font-weight: 300;
+  margin-bottom: 2rem;
 }
-.concept-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  border-top: 1px solid rgba(31,77,43,0.12);
-}
+.concept-items { display: flex; flex-direction: column; }
 .concept-item {
-  padding: 2.5rem 2rem 2.5rem 0;
-  border-right: 1px solid rgba(31,77,43,0.08);
+  padding: 2rem 0;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 1.5rem;
+  align-items: start;
 }
-.concept-item:last-child { border-right: none; padding-right: 0; }
-.concept-item:first-child { padding-left: 0; }
+.concept-item:last-child { border-bottom: 1px solid var(--border); }
 .concept-num {
   font-family: 'Cormorant Garamond', serif;
   font-size: 0.85rem;
   color: var(--gold);
-  margin-bottom: 1.5rem;
-  opacity: 0.8;
+  padding-top: 3px;
 }
 .concept-item h3 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: var(--green);
-  margin-bottom: 0.75rem;
-  line-height: 1.3;
+  margin-bottom: 0.5rem;
 }
 .concept-item p {
   font-size: 0.85rem;
@@ -288,238 +348,381 @@ h2.display em { font-style: italic; }
   font-weight: 300;
 }
 
-/* ── FEATURES ── */
-#features { background: var(--green); padding: 100px 6%; }
-#features .eyebrow { color: var(--gold); }
-#features .eyebrow::before { background: var(--gold); }
-#features h2.display { color: var(--ivory); }
-.features-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 5rem;
-  gap: 3rem;
+/* ── PRICING ── */
+#pricing { background: var(--sand); }
+.pricing-header {
+  text-align: center;
+  margin-bottom: 4rem;
 }
-.features-sub {
+.pricing-header h2.display { margin-bottom: 1rem; }
+.pricing-header p {
   font-size: 0.9rem;
-  color: rgba(247,244,238,0.5);
-  max-width: 320px;
-  line-height: 1.8;
+  color: var(--text-muted);
   font-weight: 300;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.8;
 }
-.features-list {
+.pricing-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: rgba(200,169,110,0.15);
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 860px;
+  margin: 0 auto;
 }
-.feature-item {
+.pricing-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  position: relative;
+}
+.pricing-card.featured {
   background: var(--green);
-  padding: 3rem 2.5rem;
-  transition: background 0.3s;
+  border-color: var(--green);
 }
-.feature-item:hover { background: rgba(46,107,62,0.4); }
-.feature-index {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 4rem;
-  font-weight: 400;
-  color: rgba(200,169,110,0.15);
-  line-height: 1;
+.pricing-badge {
+  position: absolute;
+  top: -1px;
+  right: 2rem;
+  background: var(--gold);
+  color: var(--green);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+}
+.pricing-plan {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
   margin-bottom: 1.5rem;
 }
-.feature-item h3 {
+.pricing-card.featured .pricing-plan { color: rgba(247,244,238,0.5); }
+.pricing-price {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem;
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: var(--green);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.pricing-card.featured .pricing-price { color: var(--ivory); }
+.pricing-price sup {
+  font-size: 1.5rem;
+  font-weight: 300;
+  vertical-align: super;
+  margin-right: 2px;
+}
+.pricing-period {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+.pricing-card.featured .pricing-period { color: rgba(247,244,238,0.4); }
+.pricing-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+.pricing-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  font-size: 0.87rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.5;
+}
+.pricing-card.featured .pricing-features li { color: rgba(247,244,238,0.65); }
+.pricing-features li::before {
+  content: '';
+  width: 16px;
+  height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+  margin-top: 0.6rem;
+}
+.pricing-features li.dim::before { opacity: 0.3; }
+.pricing-features li.dim { opacity: 0.4; }
+.pricing-cta {
+  display: block;
+  text-align: center;
+  padding: 13px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: 1px solid var(--green);
+  color: var(--green);
+  background: transparent;
+}
+.pricing-cta:hover { background: var(--green); color: var(--white); }
+.pricing-card.featured .pricing-cta {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--green);
+}
+.pricing-card.featured .pricing-cta:hover { background: var(--gold-light); border-color: var(--gold-light); }
+
+/* ── FEATURES ── */
+#features { background: var(--green); }
+#features .eyebrow { color: var(--gold-light); }
+#features .eyebrow::before { background: var(--gold); }
+#features h2.display { color: var(--ivory); margin-bottom: 4rem; }
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid rgba(184,146,58,0.12);
+}
+.feature-cell {
+  padding: 2.5rem;
+  border-right: 1px solid rgba(184,146,58,0.12);
+  transition: background 0.3s;
+}
+.feature-cell:last-child { border-right: none; }
+.feature-cell:hover { background: rgba(255,255,255,0.03); }
+.feature-icon {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(184,146,58,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.75rem;
+}
+.feature-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+.feature-cell h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
   font-weight: 600;
   color: var(--ivory);
   margin-bottom: 0.75rem;
 }
-.feature-item p {
-  font-size: 0.85rem;
-  color: rgba(247,244,238,0.5);
-  line-height: 1.8;
+.feature-cell p {
+  font-size: 0.84rem;
+  color: rgba(247,244,238,0.45);
+  line-height: 1.85;
   font-weight: 300;
 }
 
 /* ── VALEURS ── */
-#valeurs { background: var(--sand); }
-.valeurs-grid {
+#valeurs { background: var(--ivory); }
+.valeurs-layout {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
   gap: 6rem;
   align-items: center;
 }
-.valeurs-text h2.display { margin-bottom: 1.5rem; }
-.valeurs-text p {
+.valeurs-visual {
+  background: var(--green);
+  aspect-ratio: 4/5;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+.valeurs-visual-bg {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 60px,
+    rgba(184,146,58,0.03) 60px,
+    rgba(184,146,58,0.03) 61px
+  );
+}
+.valeurs-visual-letter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12rem;
+  font-style: italic;
+  color: rgba(184,146,58,0.07);
+  user-select: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+.valeurs-visual-footer {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 2rem;
+  border-top: 1px solid rgba(184,146,58,0.15);
+}
+.valeurs-visual-footer span {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(184,146,58,0.45);
+}
+.valeurs-content h2.display { margin-bottom: 1.25rem; }
+.valeurs-content > p {
   font-size: 0.9rem;
   color: var(--text-muted);
   line-height: 1.9;
   font-weight: 300;
   margin-bottom: 2.5rem;
 }
-.valeurs-list { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
+.valeurs-list { list-style: none; display: flex; flex-direction: column; }
 .valeurs-list li {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   color: var(--text-muted);
   font-weight: 300;
   line-height: 1.7;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border);
 }
+.valeurs-list li:last-child { border-bottom: 1px solid var(--border); }
 .valeurs-list li::before {
   content: '';
-  display: block;
-  width: 20px;
+  width: 16px;
   height: 1px;
   background: var(--gold);
   flex-shrink: 0;
   margin-top: 0.65rem;
-}
-.valeurs-visual {
-  aspect-ratio: 3/4;
-  background: var(--green);
-  border-radius: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-.valeurs-visual-inner {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 7rem;
-  font-style: italic;
-  color: rgba(200,169,110,0.15);
-  user-select: none;
-  line-height: 1;
-}
-.valeurs-visual-tag {
-  position: absolute;
-  bottom: 2rem;
-  left: 2rem;
-  right: 2rem;
-  border-top: 1px solid rgba(200,169,110,0.2);
-  padding-top: 1rem;
-}
-.valeurs-visual-tag span {
-  font-size: 0.7rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(200,169,110,0.5);
+  opacity: 0.6;
 }
 
 /* ── CTA ── */
 #cta {
-  background: var(--ivory);
+  background: var(--green);
   text-align: center;
-  padding: 120px 6%;
+  padding: 120px 5%;
+  position: relative;
+  overflow: hidden;
 }
-#cta h2.display { margin-bottom: 1rem; }
-#cta p {
+.cta-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(184,146,58,0.06) 0%, transparent 70%);
+}
+#cta .eyebrow { justify-content: center; color: var(--gold-light); }
+#cta .eyebrow::before { background: var(--gold); }
+#cta h2.display {
+  color: var(--ivory);
+  margin-bottom: 1rem;
+  position: relative;
+}
+#cta > .section-inner > p {
   font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 3rem;
+  color: rgba(247,244,238,0.45);
+  margin-bottom: 3.5rem;
   font-weight: 300;
   line-height: 1.8;
+  position: relative;
 }
-.signup-wrap {
-  max-width: 480px;
+.cta-box {
+  max-width: 460px;
   margin: 0 auto;
-  background: var(--white);
-  border: 1px solid rgba(31,77,43,0.1);
+  background: rgba(247,244,238,0.04);
+  border: 1px solid rgba(184,146,58,0.18);
   padding: 2.5rem;
+  position: relative;
 }
-.signup-wrap h3 {
+.cta-box h3 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
-  color: var(--green);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--ivory);
   margin-bottom: 0.5rem;
 }
-.signup-wrap p {
-  font-size: 0.82rem;
-  color: var(--text-muted);
+.cta-box > p {
+  font-size: 0.83rem;
+  color: rgba(247,244,238,0.4);
   margin-bottom: 1.5rem;
+  font-weight: 300;
 }
-.signup-note {
-  font-size: 0.75rem;
-  color: var(--text-muted);
+.cta-note {
+  font-size: 0.72rem;
+  color: rgba(247,244,238,0.25);
   margin-top: 1rem;
-  opacity: 0.6;
   font-weight: 300;
 }
 
 /* ── FOOTER ── */
 footer {
-  background: var(--green);
-  padding: 4rem 6%;
+  background: var(--text);
+  padding: 3rem 5%;
+}
+.footer-inner {
+  max-width: 1140px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid rgba(200,169,110,0.1);
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 .footer-logo {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: var(--gold);
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 .footer-links {
   display: flex;
   gap: 2rem;
   list-style: none;
+  flex-wrap: wrap;
 }
 .footer-links a {
-  font-size: 0.75rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: rgba(247,244,238,0.35);
+  font-size: 0.73rem;
+  letter-spacing: 0.5px;
+  color: rgba(247,244,238,0.28);
   text-decoration: none;
   transition: color 0.2s;
 }
 .footer-links a:hover { color: var(--gold); }
 .footer-copy {
-  font-size: 0.75rem;
-  color: rgba(247,244,238,0.25);
+  font-size: 0.73rem;
+  color: rgba(247,244,238,0.2);
   font-weight: 300;
 }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 900px) {
-  .concept-header { grid-template-columns: 1fr; gap: 2rem; }
-  .concept-grid { grid-template-columns: 1fr 1fr; }
-  .concept-item {
-    border-right: none;
-    border-bottom: 1px solid rgba(31,77,43,0.08);
-    padding: 2rem 1rem;
-  }
-  .concept-item:nth-child(odd) { padding-left: 0; padding-right: 1rem; }
-  .concept-item:nth-child(even) { padding-left: 1rem; padding-right: 0; }
-  .features-list { grid-template-columns: 1fr; }
-  .features-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-  .valeurs-grid { grid-template-columns: 1fr; gap: 3rem; }
+@media (max-width: 960px) {
+  #hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .concept-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .concept-left { position: static; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
+  .features-grid { grid-template-columns: 1fr; }
+  .feature-cell { border-right: none; border-bottom: 1px solid rgba(184,146,58,0.12); }
+  .feature-cell:last-child { border-bottom: none; }
+  .valeurs-layout { grid-template-columns: 1fr; }
   .valeurs-visual { display: none; }
-  .hero-ornament { display: none; }
-  footer { flex-direction: column; gap: 1.5rem; text-align: center; }
 }
 
 @media (max-width: 640px) {
   nav { padding: 0 5%; }
   .nav-links { display: none; }
-  section { padding: 70px 5%; }
-  #hero { padding: 0 5% 8vh; }
-  .concept-grid { grid-template-columns: 1fr; }
-  .concept-item {
-    padding: 2rem 0 !important;
-    border-right: none;
-    border-bottom: 1px solid rgba(31,77,43,0.08);
-  }
-  .concept-item:last-child { border-bottom: none; }
-  .hero-actions { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-  .signup-wrap { padding: 1.75rem; }
-  .footer-links { flex-direction: column; gap: 1rem; align-items: center; }
+  section { padding: 64px 5%; }
+  #hero { padding-top: 64px; }
+  .hero-left { padding: 6vh 5%; }
+  .hero-stats { gap: 2rem; flex-wrap: wrap; }
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
 }
 </style>
 </head>
@@ -529,99 +732,187 @@ footer {
   <span class="nav-logo">Harusi</span>
   <ul class="nav-links">
     <li><a href="#concept">Concept</a></li>
+    <li><a href="#pricing">Tarifs</a></li>
     <li><a href="#features">Fonctionnalités</a></li>
-    <li><a href="#valeurs">Nos valeurs</a></li>
-    <li><a href="#cta">Rejoindre</a></li>
+    <li><a href="#valeurs">Valeurs</a></li>
   </ul>
-  <a href="#cta" class="nav-cta">Être notifié</a>
+  <a href="/connexion" class="nav-cta">Rejoindre</a>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
-  <div class="hero-bg-pattern"></div>
-  <div class="hero-ornament">
-    <span class="hero-ornament-letter">H</span>
-  </div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">Bientôt disponible</div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Disponible maintenant</div>
     <h1>La rencontre <em>halal</em>,<br>à la comorienne</h1>
-    <p>Harusi réunit les comoriens du monde entier pour des rencontres sérieuses, dans le respect des valeurs islamiques et de la tradition.</p>
+    <p class="hero-sub">Harusi réunit les comoriens du monde entier pour des rencontres sérieuses, dans le respect des valeurs islamiques et de la tradition familiale.</p>
     <div class="hero-actions">
-      <a href="#cta" class="btn-gold">Être notifié du lancement</a>
-      <a href="#concept" class="hero-scroll">Découvrir</a>
+      <a href="/connexion" class="btn-gold">Créer un compte</a>
+      <a href="#concept" class="btn-ghost">Découvrir</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">Gratuit</div>
+        <div class="hero-stat-label">Pour commencer</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">9,99€</div>
+        <div class="hero-stat-label">Version Premium / mois</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">Profils vérifiés</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-pattern"></div>
+    <div class="hero-right-content">
+      <span class="hero-arabic">Harusi</span>
+      <div class="hero-card">
+        <div class="hero-card-label">Supervision familiale</div>
+        <p>Invitez votre wali à suivre vos échanges via un lien sécurisé. La famille, au cœur de la démarche.</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- CONCEPT -->
 <section id="concept">
   <div class="section-inner">
-    <div class="concept-header">
-      <div>
+    <div class="concept-layout">
+      <div class="concept-left">
         <div class="eyebrow">Notre concept</div>
-        <h2 class="display">Conçu pour<br>votre communauté</h2>
+        <h2 class="display">Conçu pour<br>votre <em>communauté</em></h2>
+        <p>Harusi n'est pas une application de rencontres ordinaire. C'est une plateforme pensée pour la communauté comorienne, enracinée dans la foi et la tradition — pour ceux qui cherchent un engagement sincère.</p>
       </div>
-      <p>Harusi n'est pas une application de rencontres ordinaire. C'est une plateforme pensée pour la communauté comorienne, enracinée dans la foi et la tradition — pour ceux qui cherchent un engagement sincère.</p>
-    </div>
-    <div class="concept-grid">
-      <div class="concept-item">
-        <div class="concept-num">01</div>
-        <h3>Fondation islamique</h3>
-        <p>Chaque fonctionnalité est conçue dans le respect des principes de l'Islam. Pas de contenu inapproprié, pas de tchat non supervisé.</p>
-      </div>
-      <div class="concept-item">
-        <div class="concept-num">02</div>
-        <h3>Système wali intégré</h3>
-        <p>Un tuteur familial peut suivre les échanges, conformément à la tradition comorienne. Les familles sont impliquées dès le départ.</p>
-      </div>
-      <div class="concept-item">
-        <div class="concept-num">03</div>
-        <h3>Communauté mondiale</h3>
-        <p>Moroni, Paris, Marseille, Mayotte — Harusi connecte les comoriens de la diaspora et de l'archipel en un seul espace.</p>
-      </div>
-      <div class="concept-item">
-        <div class="concept-num">04</div>
-        <h3>Vers le mariage</h3>
-        <p>Notre objectif est clair : accompagner vers un mariage sérieux. Chaque profil, chaque échange est orienté vers cela.</p>
+      <div class="concept-items">
+        <div class="concept-item">
+          <div class="concept-num">01</div>
+          <div>
+            <h3>Fondation islamique</h3>
+            <p>Chaque fonctionnalité est conçue dans le respect des principes de l'Islam. Pas de contenu inapproprié, pas d'échanges non encadrés.</p>
+          </div>
+        </div>
+        <div class="concept-item">
+          <div class="concept-num">02</div>
+          <div>
+            <h3>Système wali intégré</h3>
+            <p>Un tuteur familial peut suivre les échanges via un lien sécurisé dédié, conformément à la tradition comorienne.</p>
+          </div>
+        </div>
+        <div class="concept-item">
+          <div class="concept-num">03</div>
+          <div>
+            <h3>Communauté mondiale</h3>
+            <p>Moroni, Paris, Marseille, Mayotte — Harusi connecte les comoriens de la diaspora et de l'archipel en un seul espace.</p>
+          </div>
+        </div>
+        <div class="concept-item">
+          <div class="concept-num">04</div>
+          <div>
+            <h3>Vers le mariage</h3>
+            <p>Notre objectif est clair : accompagner vers un mariage sérieux. Chaque profil, chaque échange est orienté vers cela.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-inner">
+    <div class="pricing-header">
+      <div class="eyebrow" style="justify-content:center;">Tarifs</div>
+      <h2 class="display">Simple et <em>transparent</em></h2>
+      <p>Commencez gratuitement. Passez en Premium pour débloquer toutes les fonctionnalités.</p>
+    </div>
+    <div class="pricing-grid">
+      <!-- Gratuit -->
+      <div class="pricing-card">
+        <div class="pricing-plan">Gratuit</div>
+        <div class="pricing-price">0<sup>€</sup></div>
+        <div class="pricing-period">Pour toujours</div>
+        <ul class="pricing-features">
+          <li>Profil complet et photo vérifiée</li>
+          <li>10 messages par jour</li>
+          <li>Voir le nombre de vues de profil</li>
+          <li>Lien wali par conversation</li>
+          <li>Visibilité standard dans les résultats</li>
+          <li class="dim">Identité des visiteurs de profil</li>
+          <li class="dim">Messages illimités</li>
+          <li class="dim">Priorité dans les résultats</li>
+          <li class="dim">Badge vérifié</li>
+        </ul>
+        <a href="/connexion" class="pricing-cta">Créer un compte</a>
+      </div>
+      <!-- Premium -->
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Recommandé</div>
+        <div class="pricing-plan">Premium</div>
+        <div class="pricing-price">9,99<sup>€</sup></div>
+        <div class="pricing-period">par mois · sans engagement</div>
+        <ul class="pricing-features">
+          <li>Profil complet et photo vérifiée</li>
+          <li>Messages illimités</li>
+          <li>Voir qui a consulté votre profil</li>
+          <li>Lien wali par conversation</li>
+          <li>Priorité dans les résultats de recherche</li>
+          <li>Badge vérifié visible sur votre profil</li>
+          <li>Support prioritaire</li>
+        </ul>
+        <a href="/connexion" class="pricing-cta">Commencer en Premium</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
 <section id="features">
   <div class="section-inner">
-    <div class="features-header">
-      <div>
-        <div class="eyebrow">Fonctionnalités</div>
-        <h2 class="display">Ce qui nous<br>distingue</h2>
-      </div>
-      <p class="features-sub">Trois piliers conçus pour des rencontres dignes, encadrées et authentiques.</p>
-    </div>
-    <div class="features-list">
-      <div class="feature-item">
-        <div class="feature-index">01</div>
+    <div class="eyebrow">Fonctionnalités</div>
+    <h2 class="display" style="margin-bottom:3.5rem;">Ce qui nous <em>distingue</em></h2>
+    <div class="features-grid">
+      <div class="feature-cell">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 1 1 0 10A5 5 0 0 1 12 2zm0 12c5.33 0 8 2.67 8 4v2H4v-2c0-1.33 2.67-4 8-4z"/></svg>
+        </div>
         <h3>Profils vérifiés</h3>
-        <p>Chaque inscription est vérifiée manuellement. Photo, téléphone, validation. Zéro faux profil toléré.</p>
+        <p>Chaque inscription est vérifiée manuellement. Photo, identité, validation humaine. Zéro faux profil toléré.</p>
       </div>
-      <div class="feature-item">
-        <div class="feature-index">02</div>
+      <div class="feature-cell">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
         <h3>Messagerie encadrée</h3>
-        <p>Les échanges sont limités en phase initiale. Une messagerie respectueuse, sans contenu inapproprié.</p>
+        <p>10 messages par jour en version gratuite. Une messagerie respectueuse, sans contenu inapproprié. Illimitée en Premium.</p>
       </div>
-      <div class="feature-item">
-        <div class="feature-index">03</div>
-        <h3>Tuteur intégré</h3>
-        <p>Invitez un membre de votre famille à suivre vos échanges via un lien sécurisé dédié.</p>
+      <div class="feature-cell">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Tuteur familial</h3>
+        <p>Invitez votre wali à suivre vos échanges via un lien sécurisé. La supervision familiale, intégrée nativement.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- VALEURS -->
 <section id="valeurs">
   <div class="section-inner">
-    <div class="valeurs-grid">
-      <div class="valeurs-text">
+    <div class="valeurs-layout">
+      <div class="valeurs-visual">
+        <div class="valeurs-visual-bg"></div>
+        <div class="valeurs-visual-letter">H</div>
+        <div class="valeurs-visual-footer">
+          <span>La rencontre halal · À la comorienne</span>
+        </div>
+      </div>
+      <div class="valeurs-content">
         <div class="eyebrow">Nos valeurs</div>
         <h2 class="display">Sérieux.<br><em>Respectueux.</em><br>Ancré.</h2>
-        <p>Harusi est née d'un constat simple : la communauté comorienne mérite une plateforme qui lui ressemble. Une plateforme qui comprend ses valeurs, sa culture, et son rapport au mariage.</p>
+        <p>Harusi est née d'un constat simple : la communauté comorienne mérite une plateforme qui lui ressemble — qui comprend ses valeurs, sa culture et son rapport au mariage.</p>
         <ul class="valeurs-list">
           <li>Profils vérifiés, pas d'anonymat</li>
           <li>Aucune photo inappropriée autorisée</li>
@@ -630,48 +921,37 @@ footer {
           <li>Modération humaine, pas uniquement algorithmique</li>
         </ul>
       </div>
-      <div class="valeurs-visual">
-        <div class="valeurs-visual-inner">Harusi</div>
-        <div class="valeurs-visual-tag">
-          <span>La rencontre halal · À la comorienne</span>
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
+<!-- CTA -->
 <section id="cta">
+  <div class="cta-bg"></div>
   <div class="section-inner">
-    <div class="eyebrow" style="justify-content:center;">Lancement imminent</div>
-    <h2 class="display" style="margin-bottom:1rem;">Rejoins<br>la communauté</h2>
-    <p>Sois parmi les premiers à accéder à Harusi lors du lancement.<br>Aucun spam — juste la date et une surprise pour les premiers inscrits.</p>
-    <div class="signup-wrap">
-      <h3>Être notifié</h3>
-      <p>Entre ton email pour rejoindre la liste d'attente</p>
-      <iframe
-        data-tally-src="https://tally.so/embed/jazOjx?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-        loading="lazy"
-        width="100%"
-        height="120"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-        title="Harusi liste d'attente"
-        style="border: none; margin-top: 4px; background: transparent;">
-      </iframe>
-      <p class="signup-note">Aucun spam. Désinscription possible à tout moment.</p>
+    <div class="eyebrow">Prêt à commencer ?</div>
+    <h2 class="display" style="color:var(--ivory);margin-bottom:1rem;">Rejoins<br><em>la communauté</em></h2>
+    <p>Crée ton compte en quelques minutes et commence à explorer des profils vérifiés de ta communauté.</p>
+    <div class="cta-box">
+      <h3>Inscription gratuite</h3>
+      <p>Rejoins Harusi dès aujourd'hui — sans engagement</p>
+      <a href="/connexion" class="btn-gold" style="display:block;text-align:center;width:100%;padding:14px;">Créer mon compte</a>
+      <p class="cta-note">Gratuit pour toujours · Premium à 9,99€/mois</p>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <span class="footer-logo">Harusi</span>
-  <ul class="footer-links">
-    <li><a href="#">Mentions légales</a></li>
-    <li><a href="#">Confidentialité</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
-  <span class="footer-copy">© 2025 Harusi</span>
+  <div class="footer-inner">
+    <span class="footer-logo">Harusi</span>
+    <ul class="footer-links">
+      <li><a href="/cgu">Mentions légales</a></li>
+      <li><a href="/privacy">Confidentialité</a></li>
+      <li><a href="/regles">Règles</a></li>
+    </ul>
+    <span class="footer-copy">© 2025 Harusi</span>
+  </div>
 </footer>
 
 <script>
@@ -682,6 +962,5 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 </script>
-<script async src="https://tally.so/widgets/embed.js"></script>
 </body>
 </html>
